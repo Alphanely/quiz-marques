@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: #fdf5ee;
@@ -18,351 +17,351 @@
       justify-content: center;
       padding: 20px;
     }
-
     .container { width: 100%; max-width: 680px; }
-
     .screen { display: none; }
     .screen.active { display: block; }
 
-    /* ── START ── */
-    .start-screen {
-      text-align: center;
+    /* ── SHARED CARD ── */
+    .card-wrap {
       background: white;
       border-radius: 24px;
-      padding: 56px 44px;
+      padding: 40px 36px;
       box-shadow: 0 4px 30px rgba(0,0,0,0.08);
     }
-    .start-icon { font-size: 3rem; margin-bottom: 18px; }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      color: #2c2c2c;
-      margin-bottom: 8px;
-    }
+    h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #2c2c2c; margin-bottom: 6px; }
     h1 span { color: #c97b7b; font-style: italic; }
-    .subtitle { color: #aaa; font-size: 0.85rem; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 20px; }
-    .start-desc {
-      color: #777;
-      font-size: 0.95rem;
-      line-height: 1.8;
-      margin-bottom: 34px;
-    }
-    .category-pills {
-      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
-      margin-bottom: 36px;
-    }
-    .pill {
+    .subtitle { color: #bbb; font-size: 0.82rem; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 24px; }
+
+    /* ── HOME ── */
+    .home-screen { text-align: center; }
+    .home-icon { font-size: 2.8rem; margin-bottom: 16px; }
+    .mode-grid { display: grid; gap: 14px; margin: 28px 0; }
+    .mode-card {
       background: #fdf5ee;
-      border: 1.5px solid #f0e0d0;
-      color: #c97b7b;
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 5px 14px;
-      border-radius: 20px;
-    }
-    .btn-primary {
-      background: #c97b7b;
-      color: white;
-      border: none;
-      padding: 15px 44px;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform .2s, background .2s;
-      font-family: 'Inter', sans-serif;
-    }
-    .btn-primary:hover { background: #b56b6b; transform: translateY(-2px); }
-
-    /* ── QUIZ ── */
-    .quiz-screen {
-      background: white;
-      border-radius: 24px;
-      padding: 36px;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-    }
-
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      gap: 14px;
-    }
-    .progress-wrap {
-      flex: 1;
-      background: #f0e8e0;
-      border-radius: 10px;
-      height: 7px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(to right, #e8a4a4, #c97b7b);
-      border-radius: 10px;
-      transition: width .5s ease;
-    }
-    .counter { font-size: 0.82rem; color: #bbb; white-space: nowrap; }
-
-    .meta-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-    }
-    .tag {
-      background: #fdf5ee;
-      border: 1.5px solid #f0e0d0;
-      color: #c97b7b;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 4px 14px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-    }
-    .score-live { font-size: 0.82rem; color: #bbb; }
-
-    .question {
-      font-size: 1.12rem;
-      font-weight: 600;
-      line-height: 1.65;
-      margin-bottom: 26px;
-      color: #1e1e1e;
-    }
-
-    .answers { display: grid; gap: 11px; }
-    .answer-btn {
-      background: #fdf5ee;
-      border: 2px solid #efe4d8;
-      padding: 14px 20px;
-      border-radius: 14px;
+      border: 2px solid #f0e0d0;
+      border-radius: 18px;
+      padding: 20px 22px;
       text-align: left;
       cursor: pointer;
-      font-size: 0.95rem;
-      transition: all .18s;
-      font-family: 'Inter', sans-serif;
-      color: #2c2c2c;
+      transition: all .2s;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 16px;
+    }
+    .mode-card:hover { border-color: #c97b7b; background: white; transform: translateY(-2px); }
+    .mode-card:hover .mode-icon-wrap { background: #c97b7b; color: white; }
+    .mode-icon-wrap {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: #efe4d8; display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0; transition: all .2s;
+    }
+    .mode-title { font-weight: 700; font-size: 1rem; margin-bottom: 3px; }
+    .mode-desc { color: #999; font-size: 0.83rem; }
+    .mode-badge {
+      margin-left: auto; flex-shrink: 0;
+      background: #c97b7b; color: white;
+      font-size: 0.7rem; font-weight: 700;
+      padding: 3px 9px; border-radius: 20px;
+    }
+    .mode-badge.green { background: #5fad72; }
+    .mode-badge.orange { background: #e07a40; }
+
+    /* ── PROGRESS BAR ── */
+    .top-bar { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .progress-wrap { flex: 1; background: #f0e8e0; border-radius: 10px; height: 7px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(to right, #e8a4a4, #c97b7b); border-radius: 10px; transition: width .5s ease; }
+    .counter { font-size: 0.82rem; color: #bbb; white-space: nowrap; }
+    .meta-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .tag {
+      background: #fdf5ee; border: 1.5px solid #f0e0d0;
+      color: #c97b7b; font-size: 0.75rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: .05em;
+    }
+    .score-live { font-size: 0.82rem; color: #bbb; }
+    .question { font-size: 1.1rem; font-weight: 700; line-height: 1.65; margin-bottom: 24px; color: #1e1e1e; }
+
+    /* ── ANSWERS ── */
+    .answers { display: grid; gap: 10px; }
+    .answer-btn {
+      background: #fdf5ee; border: 2px solid #efe4d8;
+      padding: 13px 18px; border-radius: 13px; text-align: left;
+      cursor: pointer; font-size: 0.92rem; transition: all .18s;
+      font-family: 'Inter', sans-serif; color: #2c2c2c;
+      display: flex; align-items: center; gap: 10px;
     }
     .answer-letter {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: #efe4d8;
-      color: #c97b7b;
-      font-size: 0.78rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: all .18s;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #efe4d8; color: #c97b7b;
+      font-size: 0.75rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all .18s;
     }
-    .answer-btn:hover:not(:disabled) {
-      border-color: #c97b7b;
-      background: white;
-    }
-    .answer-btn:hover:not(:disabled) .answer-letter {
-      background: #c97b7b;
-      color: white;
-    }
-    .answer-btn.correct {
-      background: #e8f5eb;
-      border-color: #5fad72;
-    }
-    .answer-btn.correct .answer-letter {
-      background: #5fad72;
-      color: white;
-    }
-    .answer-btn.wrong {
-      background: #fdeaea;
-      border-color: #d95f5f;
-    }
-    .answer-btn.wrong .answer-letter {
-      background: #d95f5f;
-      color: white;
-    }
+    .answer-btn:hover:not(:disabled) { border-color: #c97b7b; background: white; }
+    .answer-btn:hover:not(:disabled) .answer-letter { background: #c97b7b; color: white; }
+    .answer-btn.correct { background: #e8f5eb; border-color: #5fad72; }
+    .answer-btn.correct .answer-letter { background: #5fad72; color: white; }
+    .answer-btn.wrong { background: #fdeaea; border-color: #d95f5f; }
+    .answer-btn.wrong .answer-letter { background: #d95f5f; color: white; }
     .answer-btn:disabled { cursor: default; }
 
-    .feedback {
-      margin-top: 18px;
-      padding: 14px 18px;
-      border-radius: 13px;
-      font-size: 0.88rem;
-      line-height: 1.6;
-      display: none;
-    }
+    .feedback { margin-top: 16px; padding: 13px 16px; border-radius: 12px; font-size: 0.86rem; line-height: 1.6; display: none; }
     .feedback.show { display: block; }
     .feedback.ok { background: #e8f5eb; color: #1d6930; }
     .feedback.ko { background: #fdeaea; color: #852020; }
 
-    .next-btn {
-      margin-top: 20px;
-      background: #c97b7b;
-      color: white;
-      border: none;
-      padding: 13px 34px;
-      border-radius: 50px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform .2s, background .2s;
-      display: none;
+    .btn-row { margin-top: 18px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: #c97b7b; color: white; border: none;
+      padding: 12px 30px; border-radius: 50px; font-size: 0.92rem;
+      font-weight: 600; cursor: pointer; transition: transform .2s, background .2s;
       font-family: 'Inter', sans-serif;
     }
-    .next-btn.show { display: inline-block; }
-    .next-btn:hover { background: #b56b6b; transform: translateY(-2px); }
+    .btn-primary:hover { background: #b56b6b; transform: translateY(-2px); }
+    .btn-ghost {
+      background: none; border: 2px solid #efe4d8; color: #aaa;
+      padding: 12px 22px; border-radius: 50px; font-size: 0.88rem;
+      font-weight: 600; cursor: pointer; transition: all .18s;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-ghost:hover { border-color: #c97b7b; color: #c97b7b; }
+    .hidden { display: none !important; }
 
     /* ── RESULTS ── */
-    .results-screen {
-      background: white;
-      border-radius: 24px;
-      padding: 52px 44px;
-      text-align: center;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-    }
+    .results-screen { text-align: center; }
     .score-ring {
-      width: 148px;
-      height: 148px;
-      border-radius: 50%;
+      width: 136px; height: 136px; border-radius: 50%;
       background: linear-gradient(135deg, #e8a4a4, #c97b7b);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 26px;
-      color: white;
-      flex-direction: column;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px; color: white; flex-direction: column;
       box-shadow: 0 10px 28px rgba(201,123,123,.3);
     }
-    .score-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      line-height: 1;
-      font-weight: 700;
-    }
-    .score-total { font-size: 0.85rem; opacity: .85; }
-    .result-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 8px;
-    }
-    .result-sub { color: #999; font-size: 0.9rem; margin-bottom: 10px; }
-    .result-msg {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      color: #c97b7b;
-      font-size: 1.05rem;
-      margin-bottom: 32px;
-    }
-
-    .actions { display: flex; gap: 12px; justify-content: center; margin-bottom: 36px; flex-wrap: wrap; }
-    .btn-secondary {
-      background: white;
-      border: 2px solid #efe4d8;
-      color: #888;
-      padding: 13px 28px;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all .18s;
-      font-family: 'Inter', sans-serif;
-    }
-    .btn-secondary:hover { border-color: #c97b7b; color: #c97b7b; }
-
+    .score-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; line-height: 1; font-weight: 700; }
+    .score-tot { font-size: 0.85rem; opacity: .85; }
+    .res-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 6px; }
+    .res-sub { color: #999; font-size: 0.88rem; margin-bottom: 8px; }
+    .res-msg { font-family: 'Playfair Display', serif; font-style: italic; color: #c97b7b; font-size: 1rem; margin-bottom: 26px; }
+    .action-row { display: flex; gap: 10px; justify-content: center; margin-bottom: 28px; flex-wrap: wrap; }
     .detail-section { text-align: left; }
-    .detail-title {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #bbb;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: 12px;
-    }
-    .result-list { max-height: 320px; overflow-y: auto; display: grid; gap: 8px; }
-    .ri {
-      padding: 11px 14px;
-      border-radius: 11px;
-      font-size: 0.84rem;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
-    .ri.ok { background: #e8f5eb; }
-    .ri.ko { background: #fdeaea; }
+    .detail-title { font-size: 0.78rem; font-weight: 700; color: #ccc; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+    .result-list { max-height: 280px; overflow-y: auto; display: grid; gap: 7px; }
+    .ri { padding: 10px 13px; border-radius: 10px; font-size: 0.82rem; display: flex; gap: 9px; align-items: flex-start; }
+    .ri.ok { background: #e8f5eb; } .ri.ko { background: #fdeaea; }
     .ri-icon { flex-shrink: 0; font-weight: 700; margin-top: 1px; }
-    .ri.ok .ri-icon { color: #3a9950; }
-    .ri.ko .ri-icon { color: #c0392b; }
-    .ri-q { font-weight: 500; margin-bottom: 2px; color: #2c2c2c; }
-    .ri-a { color: #666; }
+    .ri.ok .ri-icon { color: #3a9950; } .ri.ko .ri-icon { color: #c0392b; }
+    .ri-q { font-weight: 500; margin-bottom: 1px; } .ri-a { color: #666; }
     .ri-a strong { color: #2c2c2c; }
+
+    /* ── FLASHCARDS ── */
+    .flash-header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+    .back-btn {
+      background: none; border: 1.5px solid #efe4d8; color: #bbb;
+      padding: 7px 14px; border-radius: 30px; font-size: 0.82rem;
+      font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: all .18s; white-space: nowrap;
+    }
+    .back-btn:hover { border-color: #c97b7b; color: #c97b7b; }
+    .flash-counter { font-size: 0.82rem; color: #bbb; margin-left: auto; }
+
+    /* Card flip */
+    .flip-area { perspective: 1000px; margin-bottom: 18px; cursor: pointer; }
+    .flip-card {
+      position: relative; width: 100%; min-height: 260px;
+      transform-style: preserve-3d; transition: transform .55s ease;
+    }
+    .flip-card.flipped { transform: rotateY(180deg); }
+    .flip-face {
+      position: absolute; width: 100%; min-height: 260px;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      border-radius: 20px; padding: 28px 26px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .flip-front {
+      background: linear-gradient(135deg, #fdf0e8, #f9e4d4);
+      border: 2px solid #f0ddd0;
+    }
+    .flip-back {
+      background: linear-gradient(135deg, #f5eaf8, #ede0f8);
+      border: 2px solid #ddc8f0;
+      transform: rotateY(180deg);
+    }
+    .flip-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #d4956a; margin-bottom: 14px; }
+    .flip-back .flip-label { color: #9b6dbf; }
+    .flip-hint { font-size: 0.95rem; line-height: 1.75; color: #2c2c2c; flex: 1; }
+    .flip-tap { font-size: 0.78rem; color: #d4956a; opacity: .8; margin-top: 14px; text-align: center; }
+    .flip-back .flip-tap { color: #9b6dbf; }
+    .flip-brand { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #2c2c2c; margin-bottom: 8px; }
+    .flip-flag { font-size: 1.6rem; margin-bottom: 12px; }
+    .flip-origin { font-size: 0.85rem; color: #7b5ea7; }
+
+    .flash-buttons { display: flex; gap: 10px; }
+    .btn-knew {
+      flex: 1; background: #e8f5eb; border: 2px solid #5fad72; color: #1d6930;
+      padding: 13px; border-radius: 13px; font-size: 0.92rem; font-weight: 700;
+      cursor: pointer; font-family: 'Inter', sans-serif; transition: all .18s;
+    }
+    .btn-knew:hover { background: #5fad72; color: white; }
+    .btn-review {
+      flex: 1; background: #fdeaea; border: 2px solid #d95f5f; color: #852020;
+      padding: 13px; border-radius: 13px; font-size: 0.92rem; font-weight: 700;
+      cursor: pointer; font-family: 'Inter', sans-serif; transition: all .18s;
+    }
+    .btn-review:hover { background: #d95f5f; color: white; }
+    .flash-instruction { text-align: center; font-size: 0.8rem; color: #ccc; margin-top: 12px; }
+
+    /* Flash result */
+    .flash-result { text-align: center; }
+    .flash-score-row { display: flex; gap: 14px; justify-content: center; margin: 22px 0; }
+    .fscore-box { background: #fdf5ee; border-radius: 16px; padding: 18px 24px; text-align: center; flex: 1; }
+    .fscore-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
+    .fscore-num.green { color: #3a9950; } .fscore-num.orange { color: #e07a40; }
+    .fscore-label { font-size: 0.78rem; color: #aaa; margin-top: 4px; }
+
+    /* Difficulty badge on quiz */
+    .diff-hard .tag { background: #fff3ee; border-color: #f0c8a8; color: #c96b2b; }
+    .diff-hard .progress-fill { background: linear-gradient(to right, #f0a070, #c96b2b); }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- START -->
-  <div class="screen active" id="start-screen">
-    <div class="start-screen">
-      <div class="start-icon">🛍️</div>
+  <!-- HOME -->
+  <div class="screen active" id="home-screen">
+    <div class="card-wrap home-screen">
+      <div class="home-icon">🛍️</div>
       <h1>Marques <span>&amp; Essentiels</span></h1>
       <p class="subtitle">Spécial Vendredi ♥</p>
-      <p class="start-desc">
-        Teste tes connaissances sur les origines,<br>
-        les matières et les particularités de chaque marque.
-      </p>
-      <div class="category-pills">
-        <span class="pill">🌍 Origine</span>
-        <span class="pill">🏭 Fabrication</span>
-        <span class="pill">🌿 Matières</span>
-        <span class="pill">⭐ Particularités</span>
-        <span class="pill">🔑 Mots-clés</span>
+      <div class="mode-grid">
+        <div class="mode-card" onclick="startQuiz('easy')">
+          <div class="mode-icon-wrap">🎯</div>
+          <div>
+            <div class="mode-title">Quiz Facile</div>
+            <div class="mode-desc">20 questions · Origine, matières, particularités</div>
+          </div>
+          <span class="mode-badge green">Facile</span>
+        </div>
+        <div class="mode-card" onclick="startQuiz('hard')">
+          <div class="mode-icon-wrap">🔥</div>
+          <div>
+            <div class="mode-title">Quiz Difficile</div>
+            <div class="mode-desc">15 questions · Prix, détails précis, anecdotes</div>
+          </div>
+          <span class="mode-badge orange">Difficile</span>
+        </div>
+        <div class="mode-card" onclick="startFlash()">
+          <div class="mode-icon-wrap">🃏</div>
+          <div>
+            <div class="mode-title">Flashcards</div>
+            <div class="mode-desc">26 marques · Retourne la carte pour voir le nom</div>
+          </div>
+          <span class="mode-badge">Révision</span>
+        </div>
       </div>
-      <button class="btn-primary" onclick="startQuiz()">Commencer le quiz →</button>
     </div>
   </div>
 
   <!-- QUIZ -->
   <div class="screen" id="quiz-screen">
-    <div class="quiz-screen">
+    <div class="card-wrap" id="quiz-wrap">
       <div class="top-bar">
-        <div class="progress-wrap">
-          <div class="progress-fill" id="progress-fill"></div>
-        </div>
-        <div class="counter" id="counter">1 / 20</div>
+        <div class="progress-wrap"><div class="progress-fill" id="q-progress"></div></div>
+        <div class="counter" id="q-counter">1 / 20</div>
       </div>
       <div class="meta-row">
         <span class="tag" id="q-tag">Origine</span>
-        <span class="score-live" id="score-live">Score : 0</span>
+        <span class="score-live" id="q-score">Score : 0</span>
       </div>
       <div class="question" id="q-text"></div>
-      <div class="answers" id="answers"></div>
-      <div class="feedback" id="feedback"></div>
-      <button class="next-btn" id="next-btn" onclick="nextQuestion()">Question suivante →</button>
+      <div class="answers" id="q-answers"></div>
+      <div class="feedback" id="q-feedback"></div>
+      <div class="btn-row">
+        <button class="btn-primary hidden" id="q-next" onclick="nextQ()">Question suivante →</button>
+        <button class="btn-ghost" onclick="goHome()">← Menu</button>
+      </div>
     </div>
   </div>
 
   <!-- RESULTS -->
   <div class="screen" id="results-screen">
-    <div class="results-screen">
+    <div class="card-wrap results-screen">
       <div class="score-ring">
-        <div class="score-num" id="res-num">0</div>
-        <div class="score-total" id="res-total">/ 20</div>
+        <div class="score-num" id="r-num">0</div>
+        <div class="score-tot" id="r-tot">/ 20</div>
       </div>
-      <div class="result-title" id="res-title">Résultat</div>
-      <div class="result-sub" id="res-sub"></div>
-      <div class="result-msg" id="res-msg"></div>
-      <div class="actions">
-        <button class="btn-primary" onclick="restartQuiz()">Rejouer →</button>
-        <button class="btn-secondary" onclick="showDetail()">Voir le détail</button>
+      <div class="res-title" id="r-title">Résultat</div>
+      <div class="res-sub" id="r-sub"></div>
+      <div class="res-msg" id="r-msg"></div>
+      <div class="action-row">
+        <button class="btn-primary" id="r-replay" onclick="replayQuiz()">Rejouer →</button>
+        <button class="btn-ghost" onclick="goHome()">← Menu</button>
+        <button class="btn-ghost" onclick="toggleDetail()">Voir le détail</button>
       </div>
-      <div class="detail-section" id="detail-section" style="display:none">
+      <div class="detail-section" id="r-detail" style="display:none">
         <div class="detail-title">Détail des réponses</div>
-        <div class="result-list" id="result-list"></div>
+        <div class="result-list" id="r-list"></div>
       </div>
+    </div>
+  </div>
+
+  <!-- FLASHCARDS -->
+  <div class="screen" id="flash-screen">
+    <div class="card-wrap">
+      <div class="flash-header">
+        <button class="back-btn" onclick="goHome()">← Menu</button>
+        <div class="progress-wrap"><div class="progress-fill" id="f-progress"></div></div>
+        <div class="flash-counter" id="f-counter">1 / 26</div>
+      </div>
+
+      <div class="flip-area" onclick="flipCard()">
+        <div class="flip-card" id="flip-card">
+          <div class="flip-face flip-front">
+            <div>
+              <div class="flip-label">📖 Description — Quelle marque suis-je ?</div>
+              <div class="flip-hint" id="f-hint"></div>
+            </div>
+            <div class="flip-tap">Appuie pour révéler la marque ↩</div>
+          </div>
+          <div class="flip-face flip-back">
+            <div>
+              <div class="flip-label">✨ La réponse</div>
+              <div class="flip-flag" id="f-flag"></div>
+              <div class="flip-brand" id="f-brand"></div>
+              <div class="flip-origin" id="f-origin"></div>
+            </div>
+            <div class="flip-tap">Je savais ? ↓</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash-buttons" id="f-buttons" style="display:none">
+        <button class="btn-review" onclick="flashAnswer(false)">✗ À revoir</button>
+        <button class="btn-knew" onclick="flashAnswer(true)">✓ Je savais !</button>
+      </div>
+      <div class="flash-instruction" id="f-instruction">Appuie sur la carte pour la retourner</div>
+    </div>
+  </div>
+
+  <!-- FLASH RESULTS -->
+  <div class="screen" id="flash-results-screen">
+    <div class="card-wrap flash-result">
+      <div style="font-size:2.5rem;margin-bottom:16px">🃏</div>
+      <h1 style="font-size:1.6rem;margin-bottom:6px">Session terminée !</h1>
+      <div class="flash-score-row">
+        <div class="fscore-box">
+          <div class="fscore-num green" id="fr-knew">0</div>
+          <div class="fscore-label">Je savais ✓</div>
+        </div>
+        <div class="fscore-box">
+          <div class="fscore-num orange" id="fr-review">0</div>
+          <div class="fscore-label">À revoir ✗</div>
+        </div>
+      </div>
+      <div class="res-msg" id="fr-msg"></div>
+      <div class="action-row">
+        <button class="btn-primary" onclick="startFlash()">Recommencer →</button>
+        <button class="btn-ghost" onclick="goHome()">← Menu</button>
+      </div>
+      <div id="fr-review-list" style="text-align:left;margin-top:20px"></div>
     </div>
   </div>
 
@@ -370,154 +369,184 @@
 <script>
 const LETTERS = ['A','B','C','D'];
 
-const ALL_Q = [
+/* ───────────────────────────────────────────────── EASY QUESTIONS */
+const EASY_Q = [
   { tag:"Origine", q:"Quelle marque est originaire de Bangkok (Thaïlande) ?",
     c:["Jap-Fac","Shupatto","Kanope","Hinbag"], a:"Jap-Fac",
     exp:"Jap-Fac est née à Bangkok — sacs en nylon déperlant, colorés, inspirés du voyage." },
-
   { tag:"Matières", q:"Quel matériau est utilisé par Dock & Bay ?",
     c:["Polyester recyclé","Coton bio","Nylon déperlant","Laine mérinos"], a:"Polyester recyclé",
-    exp:"Dock & Bay (Angleterre) — polyester recyclé, séchage rapide, modèles à 49€ et 65€." },
-
-  { tag:"Particularité", q:"Quelle marque propose des sacs pliables, pratiques et imperméables ?",
+    exp:"Dock & Bay (Angleterre) — polyester recyclé, séchage rapide." },
+  { tag:"Particularité", q:"Quelle marque propose des sacs pliables et imperméables ?",
     c:["Shupatto","Hinbag","Jap-Fac","Mila Louise"], a:"Shupatto",
     exp:"Shupatto (Japon) — polyester et nylon résistants à l'eau, sacs pliables et pratiques." },
-
-  { tag:"Mot-clé", q:"Quelle marque est associée au mot-clé 'esprit artisanal' ?",
+  { tag:"Mot-clé", q:"Quelle marque est associée à l'esprit artisanal indien ?",
     c:["Bonheur du Jour","Fukuri","Félicie Aussi","Calie"], a:"Bonheur du Jour",
-    exp:"Bonheur du Jour — matières naturelles (coton), collections issues de l'artisanat, notamment indien." },
-
+    exp:"Bonheur du Jour — matières naturelles (coton), collections issues de l'artisanat indien." },
   { tag:"Fabrication", q:"Quelle marque est produite de A à Z en Tunisie ?",
     c:["Kanope","Hinbag","Grace & Mila","French Disorder"], a:"Kanope",
-    exp:"Kanope — Paris (production de A à Z en Tunisie), tissus européens, mode éco-responsable." },
-
+    exp:"Kanope — Paris, production de A à Z en Tunisie, tissus européens, réduit le plastique." },
   { tag:"Particularité", q:"Quelle marque propose des lunettes résistantes aux rayures ?",
     c:["Charly Therapy","Dock & Bay","Lukap","Orfeo"], a:"Charly Therapy",
-    exp:"Charly Therapy (Barcelone) — verres polarisés UV400, anti-reflets, montures acétate, résistantes aux rayures." },
-
+    exp:"Charly Therapy (Barcelone) — verres polarisés UV400, anti-reflets, montures acétate." },
   { tag:"Origine", q:"Quelle marque est originaire de Bruxelles ?",
     c:["Neuville","Kanope","Daphnea","Orfeo"], a:"Neuville",
-    exp:"Neuville (Bruxelles) — cuir de haute qualité, fabriqué à la main, designs fonctionnels et durables." },
-
+    exp:"Neuville (Bruxelles) — cuir haute qualité, fait à la main, designs fonctionnels." },
   { tag:"Matières", q:"Quelle marque utilise du coton bio certifié GOTS pour ses sacs ?",
     c:["Hinbag","Colorful Standard","French Disorder","Bonheur du Jour"], a:"Hinbag",
     exp:"Hinbag (France, fabriqué en Inde) — coton bio certifié GOTS, sacs éthiques." },
-
-  { tag:"Particularité", q:"Quelle marque propose des parfums créatifs et unisexes avec un packaging sans plastique ?",
+  { tag:"Particularité", q:"Quelle marque propose des parfums unisexes avec packaging sans plastique ?",
     c:["Maison Matine","Monsieur Papier","Orfeo","Bonheur du Jour"], a:"Maison Matine",
-    exp:"Maison Matine (France) — 80 à 92% d'ingrédients naturels, parfums unisexes, packaging sans plastique." },
-
-  { tag:"Particularité", q:"Quelle marque propose des sacs en cuir de vachette avec textures irisées, velours et tressées ?",
+    exp:"Maison Matine (France) — 80 à 92% d'ingrédients naturels, packaging carton." },
+  { tag:"Particularité", q:"Quelle marque propose des sacs en cuir de vachette avec textures irisées, velours, tressées ?",
     c:["Mila Louise","Neuville","Hinbag","Jap-Fac"], a:"Mila Louise",
-    exp:"Mila Louise (Paris) — cuir vachette pleine fleur, sacs modulables, textures variées (irisé, velours, tressé)." },
-
+    exp:"Mila Louise (Paris) — cuir vachette pleine fleur, sacs modulables, textures variées." },
   { tag:"Matières", q:"Quelle marque danoise utilise du coton bio et de la laine mérinos recyclée ?",
     c:["Colorful Standard","Pieces","French Disorder","Dock & Bay"], a:"Colorful Standard",
-    exp:"Colorful Standard (Danemark, fabriqué au Portugal) — coton bio, laine mérinos recyclée, basiques unisexes." },
-
-  { tag:"Particularité", q:"Quelle marque produit de la papeterie créative avec des papiers haute qualité et encres végétales ?",
+    exp:"Colorful Standard (Danemark, fabriqué au Portugal) — coton bio, laine mérinos recyclée." },
+  { tag:"Particularité", q:"Quelle marque produit de la papeterie avec des papiers haute qualité et encres végétales ?",
     c:["Monsieur Papier","Papier Tigre","Lukap","Orfeo"], a:"Monsieur Papier",
-    exp:"Monsieur Papier (France) — papiers haute qualité, encres végétales, papeterie créative et responsable." },
-
+    exp:"Monsieur Papier (France) — papiers haute qualité, encres végétales, conçus et imprimés en France." },
   { tag:"Particularité", q:"Quelle marque française a été créée par un duo père et fils ?",
     c:["Cabane Orson","Fukuri","Félicie Aussi","Calie"], a:"Cabane Orson",
     exp:"Cabane Orson (France, côte Ouest) — créée par un duo père et fils." },
-
   { tag:"Matières", q:"Quelle marque propose des vêtements de pluie en polyester 100% recyclé ?",
     c:["Flotte","Colorful Standard","French Disorder","Dock & Bay"], a:"Flotte",
-    exp:"Flotte (France) — polyester 100% recyclé (Global Recycled Standard), imperméabilité légère, détails pratiques." },
-
+    exp:"Flotte (France) — polyester 100% recyclé (Global Recycled Standard), imperméabilité légère." },
   { tag:"Origine", q:"Quelle marque est originaire du Pays basque espagnol ?",
     c:["Tanta","Charly Therapy","Jap-Fac","Shupatto"], a:"Tanta",
-    exp:"Tanta (Pays basque espagnol) — mode responsable." },
-
+    exp:"Tanta (Pays basque espagnol) — polyester recyclé, mode responsable." },
   { tag:"Matières", q:"Quelle marque utilise du nylon déperlant pour ses sacs inspirés du voyage ?",
     c:["Jap-Fac","Shupatto","Hinbag","Dock & Bay"], a:"Jap-Fac",
     exp:"Jap-Fac (Bangkok) — nylon déperlant, sacs colorés inspirés du voyage et de la culture urbaine." },
-
-  { tag:"Origine", q:"Quelle marque vient de Vendée et utilise des matières sélectionnées localement ?",
+  { tag:"Origine", q:"Quelle marque vient de Vendée et utilise des matières locales ?",
     c:["Fukuri","Flotte","Bonheur du Jour","Cabane Orson"], a:"Fukuri",
-    exp:"Fukuri (Vendée, France) — matières sélectionnées localement (France & Europe), fabrication locale." },
-
-  { tag:"Particularité", q:"Quelle marque soutient l'émancipation des femmes avec ses sacs et accessoires éthiques ?",
+    exp:"Fukuri (Vendée, France) — matières sélectionnées localement en France & Europe." },
+  { tag:"Particularité", q:"Quelle marque soutient l'émancipation des femmes avec ses sacs éthiques ?",
     c:["Hinbag","Grace & Mila","Mila Louise","Kanope"], a:"Hinbag",
-    exp:"Hinbag (France/Inde) — coton bio GOTS, engagement pour l'émancipation des femmes." },
-
-  { tag:"Particularité", q:"Quelle marque propose des pièces uniques vendues en petite quantité ?",
+    exp:"Hinbag — ONG locale qui soutient l'émancipation des femmes et la scolarisation de leurs enfants." },
+  { tag:"Particularité", q:"Quelle marque propose des pièces uniques en petite quantité ?",
     c:["Lukap","Félicie Aussi","Calie","Daphnea"], a:"Lukap",
-    exp:"Lukap — 'Pièces uniques', collection en petite quantité." },
-
+    exp:"Lukap (France) — 'Pièces uniques', collection en petite quantité." },
   { tag:"Mot-clé", q:"Quelle marque signe sa communication 'Chic & féminin' ?",
     c:["Calie","Daphnea","Grace & Mila","Mila Louise"], a:"Calie",
     exp:"Calie (France) — 'Chic & féminin', collections imaginées à Paris." },
-
   { tag:"Particularité", q:"Quelle marque utilise le label 'Un brin de vert' ?",
     c:["Grace & Mila","Kanope","Flotte","Colorful Standard"], a:"Grace & Mila",
-    exp:"Grace & Mila (France) — label 'Un brin de vert' (+ de 50% de fibres naturelles en 2024)." },
-
-  { tag:"Origine", q:"Quelle marque vient d'Angleterre avec une inspiration australienne et canadienne ?",
+    exp:"Grace & Mila (France) — label 'Un brin de vert' : +50% de fibres naturelles en 2024." },
+  { tag:"Origine", q:"Quelle marque vient d'Angleterre avec inspiration australienne et canadienne ?",
     c:["Dock & Bay","Shupatto","Jap-Fac","Colorful Standard"], a:"Dock & Bay",
     exp:"Dock & Bay (Angleterre, inspiration Australie/Canada) — polyester recyclé, séchage rapide." },
-
   { tag:"Mot-clé", q:"Quelle marque affiche la signature 'Création française' ?",
     c:["Félicie Aussi","Flotte","Bonheur du Jour","Calie"], a:"Félicie Aussi",
     exp:"Félicie Aussi (France) — 'Création française', studio de création, pièces fabriquées en France." },
-
   { tag:"Fabrication", q:"Quelle marque est imprimée en France mais d'origine portugaise ?",
     c:["French Disorder","Colorful Standard","Hinbag","Kanope"], a:"French Disorder",
-    exp:"French Disorder (Portugal, impression en France) — coton bio, polyester recyclé, 'Good vibes Only'." },
-
-  { tag:"Particularité", q:"Quelle marque de papeterie utilise du papier recyclé avec une fabrication majoritairement locale ?",
+    exp:"French Disorder (Portugal, impression en France) — coton bio, polyester recyclé." },
+  { tag:"Particularité", q:"Quelle marque de papeterie utilise du papier recyclé avec fabrication locale ?",
     c:["Papier Tigre","Monsieur Papier","Lukap","Orfeo"], a:"Papier Tigre",
     exp:"Papier Tigre (Paris) — papier recyclé ou certifié, fabrication majoritairement locale." },
-
-  { tag:"Matières", q:"Quelle marque utilise du cuir haute qualité, souvent vachette certifié LWG, fabriqué à la main ?",
+  { tag:"Matières", q:"Quelle marque utilise du cuir vachette certifié LWG, fabriqué à la main ?",
     c:["Neuville","Mila Louise","Hinbag","Jap-Fac"], a:"Neuville",
-    exp:"Neuville (Bruxelles) — cuir de haute qualité (souvent vachette certifié LWG), fait à la main." },
-
-  { tag:"Particularité", q:"Quelle marque est connue pour ses chaussettes colorées et résistantes en coton égyptien ?",
+    exp:"Neuville (Bruxelles) — cuir haute qualité souvent vachette certifié LWG, ateliers certifiés." },
+  { tag:"Particularité", q:"Quelle marque propose des chaussettes colorées et résistantes en coton égyptien ?",
     c:["Bonne Maison","Bonheur du Jour","Colorful Standard","Dock & Bay"], a:"Bonne Maison",
-    exp:"Bonne Maison — imaginée à Paris, fabriquée en France, coton égyptien, chaussettes confortables et colorées." },
-
-  { tag:"Origine", q:"Parmi ces marques, laquelle est simplement référencée comme étant du Danemark sans autre précision ?",
+    exp:"Bonne Maison — imaginée à Paris, fabriquée en France ou Portugal, coton égyptien." },
+  { tag:"Origine", q:"Quelle marque est simplement référencée 'Danemark' sans autres détails ?",
     c:["Pieces","Colorful Standard","French Disorder","Dock & Bay"], a:"Pieces",
-    exp:"Pieces — seule son origine danoise est mentionnée dans la fiche, sans autres détails." },
-
-  { tag:"Particularité", q:"Quelle marque française propose des imprimés exclusifs et des coupes confortables ?",
+    exp:"Pieces — seule son origine danoise est mentionnée." },
+  { tag:"Particularité", q:"Quelle marque française propose des imprimés exclusifs et coupes confortables ?",
     c:["Grace & Mila","Calie","Daphnea","Félicie Aussi"], a:"Grace & Mila",
-    exp:"Grace & Mila (France) — fibres d'origines naturelles, imprimés exclusifs, coupes confortables." },
-
+    exp:"Grace & Mila (France) — fibres naturelles, imprimés exclusifs, coupes confortables." },
   { tag:"Origine", q:"Quelle marque espagnole est originaire de Barcelone ?",
     c:["Charly Therapy","Tanta","French Disorder","Jap-Fac"], a:"Charly Therapy",
     exp:"Charly Therapy (Barcelone) — lunettes polarisées, anti-reflets, montures acétate." },
-
-  { tag:"Fabrication", q:"Quelle marque est imaginée à Paris et fabriquée en France avec du coton égyptien ?",
-    c:["Bonne Maison","Félicie Aussi","Fukuri","Flotte"], a:"Bonne Maison",
-    exp:"Bonne Maison — imaginée à Paris, fabriquée en France, coton égyptien, chaussettes colorées." },
-
-  { tag:"Matières", q:"Quelle marque japonaise utilise du polyester et nylon résistants à l'eau ?",
-    c:["Shupatto","Jap-Fac","Dock & Bay","Hinbag"], a:"Shupatto",
-    exp:"Shupatto (Japon) — polyester et nylon, résistants à l'eau, sacs pliables." },
-
-  { tag:"Particularité", q:"Quelle marque produit des basiques unisexes avec une production responsable ?",
-    c:["Colorful Standard","Flotte","French Disorder","Kanope"], a:"Colorful Standard",
-    exp:"Colorful Standard (Danemark) — coton bio, laine mérinos recyclée, basiques unisexes, production responsable." },
-
-  { tag:"Origine", q:"Quelle marque de maroquinerie est originaire de Paris avec finitions artisanales ?",
-    c:["Mila Louise","Neuville","Hinbag","Bonne Maison"], a:"Mila Louise",
-    exp:"Mila Louise (Paris) — cuir de vachette pleine fleur, finitions artisanales, sacs modulables." },
 ];
 
-let questions = [], current = 0, score = 0, userAnswers = [];
+/* ───────────────────────────────────────────────── HARD QUESTIONS */
+const HARD_Q = [
+  { tag:"Prix", q:"Quel est le prix d'un modèle Charly Therapy avec verres polarisés ET montures acétate ?",
+    c:["65€","49€","79€","55€"], a:"65€",
+    exp:"Charly Therapy : 49€ = verres polarisés seuls / 65€ = verres polarisés + montures acétate." },
+  { tag:"Prix", q:"Quel est le prix d'un modèle Charly Therapy avec verres polarisés uniquement ?",
+    c:["49€","65€","39€","59€"], a:"49€",
+    exp:"Charly Therapy : 49€ = verres polarisés / 65€ = verres polarisés + montures acétate." },
+  { tag:"Histoire", q:"Dock & Bay a été présenté dans quelle émission TV ?",
+    c:["Qui veut être mon associé (UK)","Dragons' Den","Shark Tank US","The Apprentice"], a:"Qui veut être mon associé (UK)",
+    exp:"Dock & Bay — 2 amis (australien et canadien) ont participé à 'Qui veut être mon associé' version anglaise." },
+  { tag:"Détail", q:"Quelle marque utilise des coutures thermocollées et manches resserrées aux poignets ?",
+    c:["Flotte","Dock & Bay","French Disorder","Kanope"], a:"Flotte",
+    exp:"Flotte — spécialisée dans le vêtement de pluie : coutures thermocollées, manches resserrées aux poignets." },
+  { tag:"Détail", q:"L'ONG partenaire de Hinbag offre quoi aux femmes défavorisées ?",
+    c:["Travail rémunéré, formations et scolarisation","Microcrédits et logement","Formations artisanales","Travail à domicile"], a:"Travail rémunéré, formations et scolarisation",
+    exp:"Hinbag (Inde) — ONG offrant travail rémunéré, formations et scolarisation des enfants." },
+  { tag:"Fabrication", q:"Bonne Maison fabrique en France et dans quel autre pays ?",
+    c:["Portugal","Inde","Italie","Espagne"], a:"Portugal",
+    exp:"Bonne Maison — modèles imaginés à Paris, fabriqués en France ou Portugal." },
+  { tag:"Précision", q:"Quel pourcentage minimum d'ingrédients naturels dans les parfums Maison Matine ?",
+    c:["80%","70%","90%","95%"], a:"80%",
+    exp:"Maison Matine — ingrédients de 80 à 92% d'origine naturelle." },
+  { tag:"Précision", q:"Quel % de la collection Grace & Mila est en fibres naturelles en 2024 ?",
+    c:["Plus de 50%","Plus de 30%","Plus de 70%","100%"], a:"Plus de 50%",
+    exp:"Grace & Mila — label 'Un brin de vert' : +50% de la collection en fibres naturelles en 2024." },
+  { tag:"Matières", q:"Quelle marque du Pays Basque utilise du polyester recyclé ?",
+    c:["Tanta","Charly Therapy","Flotte","French Disorder"], a:"Tanta",
+    exp:"Tanta (Pays Basque espagnol) — polyester recyclé, mode responsable." },
+  { tag:"Détail", q:"Comment Kanope réduit-il son impact environnemental dans ses emballages ?",
+    c:["Réduction du plastique","Emballages papier kraft","Sacs en tissu","Boîtes bois"], a:"Réduction du plastique",
+    exp:"Kanope — réduction de l'usage du plastique dans leurs emballages." },
+  { tag:"Histoire", q:"Qui a fondé Dock & Bay ?",
+    c:["2 amis (australien + canadien)","Un duo père et fils","3 sœurs françaises","Un entrepreneur japonais"], a:"2 amis (australien + canadien)",
+    exp:"Dock & Bay — 2 amis, un australien et un canadien, ont créé la marque." },
+  { tag:"Précision", q:"Quel matériau technique Jap-Fac utilise-t-il pour allier esthétique et praticité ?",
+    c:["Nylon déperlant avec poches techniques","Polyester recyclé imperméable","Coton traité déperlant","Nylon certifié GOTS"], a:"Nylon déperlant avec poches techniques",
+    exp:"Jap-Fac — nylon déperlant, poches et détails techniques pour esthétique et praticité." },
+  { tag:"Certification", q:"Flotte est certifiée par quel standard pour son polyester recyclé ?",
+    c:["Global Recycled Standard (GRS)","GOTS","OEKO-TEX","Bluesign"], a:"Global Recycled Standard (GRS)",
+    exp:"Flotte — polyester 100% recyclé certifié Global Recycled Standard (GRS)." },
+  { tag:"Détail", q:"Neuville fabrique dans quel type d'ateliers ?",
+    c:["Ateliers certifiés","Ateliers familiaux","Ateliers en Tunisie","Ateliers GOTS"], a:"Ateliers certifiés",
+    exp:"Neuville (Bruxelles) — cuir vachette certifié LWG, fabriqué à la main dans des ateliers certifiés." },
+  { tag:"Comparaison", q:"Colorful Standard et quelle autre marque sont toutes deux du Danemark ?",
+    c:["Pieces","Dock & Bay","Orfeo","Daphnea"], a:"Pieces",
+    exp:"Colorful Standard (Danemark, fabriqué au Portugal) et Pieces (Danemark) sont les deux marques danoises." },
+];
+
+/* ───────────────────────────────────────────────── FLASHCARDS */
+const CARDS = [
+  { brand:"Bonheur du Jour", flag:"🇫🇷", origin:"France", hint:"Matières naturelles (coton) · Collections issues de l'artisanat notamment indien · Esprit artisanal" },
+  { brand:"Bonne Maison", flag:"🇫🇷", origin:"France / Portugal", hint:"Chaussettes colorées en coton égyptien · Imaginée à Paris, fabriquée en France ou Portugal · Savoir-faire traditionnel" },
+  { brand:"Calie", flag:"🇫🇷", origin:"France", hint:"Collections imaginées à Paris · Chic & féminin" },
+  { brand:"Charly Therapy", flag:"🇪🇸", origin:"Barcelone", hint:"Lunettes UV400 anti-reflets résistantes aux rayures · 49€ = polarisés / 65€ = polarisés + montures acétate" },
+  { brand:"Cabane Orson", flag:"🇫🇷", origin:"Côte Ouest, France", hint:"Créée par un duo père et fils · Côte Ouest française" },
+  { brand:"Colorful Standard", flag:"🇩🇰", origin:"Danemark / Portugal", hint:"Basiques unisexes · Coton bio + laine mérinos recyclée · Fabriqué au Portugal · Production responsable" },
+  { brand:"Daphnea", flag:"🇫🇷", origin:"France", hint:"Marque française · Collections imaginées à Paris" },
+  { brand:"Dock & Bay", flag:"🇬🇧", origin:"Angleterre", hint:"2 amis (australien + canadien) · Polyester recyclé · Séchage rapide · Passés par 'Qui veut être mon associé' UK" },
+  { brand:"Félicie Aussi", flag:"🇫🇷", origin:"France", hint:"Studio de création · Pièces fabriquées en France · Création française" },
+  { brand:"Flotte", flag:"🇫🇷", origin:"France", hint:"Vêtements de pluie · Polyester 100% recyclé (GRS) · Coutures thermocollées · Manches resserrées aux poignets" },
+  { brand:"French Disorder", flag:"🇵🇹", origin:"Portugal / France", hint:"Vêtements made in Portugal · Atelier d'impression en France · Coton bio + polyester recyclé · Good vibes Only" },
+  { brand:"Fukuri", flag:"🇫🇷", origin:"Vendée, France", hint:"Fabriqué en Vendée · Matières sélectionnées localement en France & Europe · Qualité locale" },
+  { brand:"Grace & Mila", flag:"🇫🇷", origin:"France", hint:"Imprimés exclusifs · Coupes confortables · Label 'Un brin de vert' · +50% fibres naturelles en 2024" },
+  { brand:"Hinbag", flag:"🇫🇷", origin:"France / Inde", hint:"Sacs et accessoires éthiques · Coton bio certifié GOTS · Fabriqué en Inde · ONG soutenant l'émancipation des femmes" },
+  { brand:"Jap-Fac", flag:"🇹🇭", origin:"Bangkok, Thaïlande", hint:"Sacs colorés et fonctionnels · Nylon déperlant · Inspirés du voyage et de la culture urbaine · Poches et détails techniques" },
+  { brand:"Kanope", flag:"🇫🇷", origin:"Paris / Tunisie", hint:"Créée à Paris · Production de A à Z en Tunisie · Tissus européens · Réduit le plastique dans les emballages" },
+  { brand:"Lukap", flag:"🇫🇷", origin:"France", hint:"Collection en petite quantité · Pièces uniques" },
+  { brand:"Maison Matine", flag:"🇫🇷", origin:"France", hint:"Parfums créatifs et unisexes · 80 à 92% d'ingrédients naturels · Packaging carton pour éviter le plastique" },
+  { brand:"Mila Louise", flag:"🇫🇷", origin:"Paris", hint:"Sacs en cuir de vachette pleine fleur · Finitions artisanales · Textures variées (irisé, velours, tressé) · Modèles modulables" },
+  { brand:"Monsieur Papier", flag:"🇫🇷", origin:"France", hint:"Papeterie · Papiers de haute qualité · Encres végétales · Conçus et imprimés en France" },
+  { brand:"Neuville", flag:"🇧🇪", origin:"Bruxelles", hint:"Cuir haute qualité (vachette certifié LWG) · Fabriqué à la main dans des ateliers certifiés · Designs fonctionnels et durables" },
+  { brand:"Orfeo", flag:"🇫🇷", origin:"France", hint:"Marque française · Peu d'informations supplémentaires" },
+  { brand:"Papier Tigre", flag:"🇫🇷", origin:"Paris", hint:"Marque parisienne · Papeterie créative · Papier recyclé ou certifié · Fabrication majoritairement locale en France" },
+  { brand:"Pieces", flag:"🇩🇰", origin:"Danemark", hint:"Origine : Danemark" },
+  { brand:"Shupatto", flag:"🇯🇵", origin:"Japon", hint:"Sacs pliables et pratiques · Polyester et nylon résistants à l'eau · Partiellement imperméables" },
+  { brand:"Tanta", flag:"🇪🇸", origin:"Pays Basque espagnol", hint:"Pays Basque espagnol · Polyester recyclé · Mode responsable" },
+];
+
+/* ───────────────────────────────────────────────── STATE */
+let mode = 'easy', questions = [], current = 0, score = 0, userAnswers = [];
+let flashCards = [], flashIdx = 0, flashKnew = 0, flashReview = [], cardFlipped = false;
 
 function shuffle(arr) { return [...arr].sort(() => Math.random() - .5); }
-
-function startQuiz() {
-  questions = shuffle(ALL_Q).slice(0, 20);
-  current = 0; score = 0; userAnswers = [];
-  show('quiz-screen');
-  render();
-}
 
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -525,43 +554,54 @@ function show(id) {
   window.scrollTo(0, 0);
 }
 
-function render() {
+function goHome() { show('home-screen'); }
+
+/* ───────────────────────────────────────────────── QUIZ */
+function startQuiz(m) {
+  mode = m;
+  const pool = m === 'hard' ? HARD_Q : EASY_Q;
+  const count = m === 'hard' ? 15 : 20;
+  questions = shuffle(pool).slice(0, count);
+  current = 0; score = 0; userAnswers = [];
+  const wrap = document.getElementById('quiz-wrap');
+  wrap.className = m === 'hard' ? 'card-wrap diff-hard' : 'card-wrap';
+  show('quiz-screen');
+  renderQ();
+}
+
+function replayQuiz() { startQuiz(mode); }
+
+function renderQ() {
   const q = questions[current], n = questions.length;
-  document.getElementById('progress-fill').style.width = `${(current / n) * 100}%`;
-  document.getElementById('counter').textContent = `${current + 1} / ${n}`;
+  document.getElementById('q-progress').style.width = `${(current / n) * 100}%`;
+  document.getElementById('q-counter').textContent = `${current + 1} / ${n}`;
   document.getElementById('q-tag').textContent = q.tag;
-  document.getElementById('score-live').textContent = `Score : ${score}`;
+  document.getElementById('q-score').textContent = `Score : ${score}`;
   document.getElementById('q-text').textContent = q.q;
+  document.getElementById('q-feedback').className = 'feedback';
+  document.getElementById('q-feedback').textContent = '';
+  document.getElementById('q-next').classList.add('hidden');
+  document.getElementById('q-next').textContent = current === n - 1 ? 'Voir mes résultats →' : 'Question suivante →';
 
-  const fb = document.getElementById('feedback');
-  fb.className = 'feedback';
-  fb.textContent = '';
-
-  const nb = document.getElementById('next-btn');
-  nb.className = 'next-btn';
-  nb.textContent = current === n - 1 ? 'Voir mes résultats →' : 'Question suivante →';
-
-  const div = document.getElementById('answers');
+  const div = document.getElementById('q-answers');
   div.innerHTML = '';
   shuffle(q.c).forEach((ch, i) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
     btn.innerHTML = `<span class="answer-letter">${LETTERS[i]}</span>${ch}`;
     btn.dataset.choice = ch;
-    btn.onclick = () => select(ch, q.a, q.exp, btn);
+    btn.onclick = () => selectQ(ch, q.a, q.exp);
     div.appendChild(btn);
   });
 }
 
-function select(chosen, correct, exp, clicked) {
-  const btns = document.querySelectorAll('.answer-btn');
-  btns.forEach(b => {
+function selectQ(chosen, correct, exp) {
+  document.querySelectorAll('.answer-btn').forEach(b => {
     b.disabled = true;
     if (b.dataset.choice === correct) b.classList.add('correct');
     else if (b.dataset.choice === chosen && chosen !== correct) b.classList.add('wrong');
   });
-
-  const fb = document.getElementById('feedback');
+  const fb = document.getElementById('q-feedback');
   if (chosen === correct) {
     score++;
     fb.className = 'feedback ok show';
@@ -572,30 +612,29 @@ function select(chosen, correct, exp, clicked) {
     fb.textContent = '✗ ' + exp;
     userAnswers.push({ ok: false, q: questions[current].q, a: correct, chosen });
   }
-
-  document.getElementById('next-btn').classList.add('show');
+  document.getElementById('q-next').classList.remove('hidden');
 }
 
-function nextQuestion() {
+function nextQ() {
   current++;
   if (current >= questions.length) showResults();
-  else render();
+  else renderQ();
 }
 
 function showResults() {
   show('results-screen');
   const n = questions.length, pct = Math.round(score / n * 100);
-  document.getElementById('res-num').textContent = score;
-  document.getElementById('res-total').textContent = `/ ${n}`;
-  document.getElementById('res-title').textContent = pct >= 80 ? 'Excellent travail !' : pct >= 60 ? 'Bien joué !' : pct >= 40 ? 'Pas mal !' : 'Continue à réviser !';
-  document.getElementById('res-sub').textContent = `${score} bonne${score > 1 ? 's' : ''} réponse${score > 1 ? 's' : ''} sur ${n} questions (${pct}%)`;
-  document.getElementById('res-msg').textContent =
+  document.getElementById('r-num').textContent = score;
+  document.getElementById('r-tot').textContent = `/ ${n}`;
+  document.getElementById('r-title').textContent = pct >= 80 ? 'Excellent !' : pct >= 60 ? 'Bien joué !' : pct >= 40 ? 'Pas mal !' : 'Continue !';
+  document.getElementById('r-sub').textContent = `${score} bonne${score>1?'s':''} réponse${score>1?'s':''} sur ${n} (${pct}%)`;
+  document.getElementById('r-msg').textContent =
     pct >= 90 ? '🌟 Tu connais tes marques sur le bout des doigts !' :
     pct >= 70 ? '💪 Encore quelques révisions et ce sera parfait.' :
     pct >= 50 ? '📖 Quelques marques à revoir... Tu y arrives !' :
     '🎯 La fiche de révision n\'attend que toi !';
-
-  const list = document.getElementById('result-list');
+  document.getElementById('r-detail').style.display = 'none';
+  const list = document.getElementById('r-list');
   list.innerHTML = '';
   userAnswers.forEach((ua, i) => {
     const el = document.createElement('div');
@@ -605,14 +644,73 @@ function showResults() {
   });
 }
 
-function showDetail() {
-  const d = document.getElementById('detail-section');
-  const btn = event.target;
-  if (d.style.display === 'none') { d.style.display = 'block'; btn.textContent = 'Masquer le détail'; }
-  else { d.style.display = 'none'; btn.textContent = 'Voir le détail'; }
+function toggleDetail() {
+  const d = document.getElementById('r-detail');
+  d.style.display = d.style.display === 'none' ? 'block' : 'none';
 }
 
-function restartQuiz() { startQuiz(); }
+/* ───────────────────────────────────────────────── FLASHCARDS */
+function startFlash() {
+  flashCards = shuffle(CARDS);
+  flashIdx = 0; flashKnew = 0; flashReview = [];
+  show('flash-screen');
+  renderCard();
+}
+
+function renderCard() {
+  const c = flashCards[flashIdx], n = flashCards.length;
+  document.getElementById('f-progress').style.width = `${(flashIdx / n) * 100}%`;
+  document.getElementById('f-counter').textContent = `${flashIdx + 1} / ${n}`;
+  document.getElementById('f-hint').textContent = c.hint;
+  document.getElementById('f-brand').textContent = c.brand;
+  document.getElementById('f-flag').textContent = c.flag;
+  document.getElementById('f-origin').textContent = c.origin;
+  // reset flip
+  cardFlipped = false;
+  const card = document.getElementById('flip-card');
+  card.classList.remove('flipped');
+  document.getElementById('f-buttons').style.display = 'none';
+  document.getElementById('f-instruction').textContent = 'Appuie sur la carte pour la retourner';
+}
+
+function flipCard() {
+  if (cardFlipped) return;
+  cardFlipped = true;
+  document.getElementById('flip-card').classList.add('flipped');
+  document.getElementById('f-buttons').style.display = 'flex';
+  document.getElementById('f-instruction').textContent = '';
+}
+
+function flashAnswer(knew) {
+  if (knew) { flashKnew++; }
+  else { flashReview.push(flashCards[flashIdx].brand); }
+  flashIdx++;
+  if (flashIdx >= flashCards.length) showFlashResults();
+  else renderCard();
+}
+
+function showFlashResults() {
+  show('flash-results-screen');
+  document.getElementById('fr-knew').textContent = flashKnew;
+  document.getElementById('fr-review').textContent = flashReview.length;
+  const pct = Math.round(flashKnew / flashCards.length * 100);
+  document.getElementById('fr-msg').textContent =
+    pct >= 80 ? '🌟 Excellente mémoire ! Tu maîtrises tes marques.' :
+    pct >= 60 ? '💪 Bien ! Encore quelques cartes à revoir.' :
+    '📖 Concentre-toi sur les cartes à revoir !';
+
+  const div = document.getElementById('fr-review-list');
+  div.innerHTML = '';
+  if (flashReview.length > 0) {
+    div.innerHTML = `<div class="detail-title">Marques à revoir (${flashReview.length})</div>`;
+    flashReview.forEach(b => {
+      const el = document.createElement('div');
+      el.className = 'ri ko';
+      el.innerHTML = `<span class="ri-icon">✗</span><div class="ri-q">${b}</div>`;
+      div.appendChild(el);
+    });
+  }
+}
 </script>
 </body>
 </html>
